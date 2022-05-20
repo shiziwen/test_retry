@@ -1,0 +1,15 @@
+rootProject.name = 'test_retry'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "com.github.sedovalx.gradle:gradle-aspectj-binary:1.0.45"
+    }
+}
+
+
+
+
+

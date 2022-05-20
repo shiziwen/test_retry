@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+apply plugin: 'com.github.sedovalx.gradle-aspectj-binary'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+aspectjBinary {
+    applyJavaPlugin = true
+    weaveClasses {
+        ajcSourceSets = [project.sourceSets.main, project.sourceSets.test]
+        source = '1.8'
+        target = '1.8'
+        additionalAjcParams = ['-proceedOnError']
+    }
+}
+
+
+dependencies {
+    implementation 'com.jcabi:jcabi-aspects:0.22.6'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+//weaveClasses.dependsOn compileJava
+//classes.dependsOn weaveClasses
